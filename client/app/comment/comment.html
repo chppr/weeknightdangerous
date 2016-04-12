@@ -17,7 +17,7 @@
             <h3>Howdy, {{ comments.username }} </h3> 
             <h4>Tell us your experience with this trail</h4>
             <textarea name="comment" class="comment-text textarea" rows="10" cols="50" ng-model="comments.text" required /></textarea><br />
-              <p ng-show="commentForm.comment.$error.required">Opps you forgot to add a comment</p>
+              <p ng-show="commentForm.comment.$error.required">Oops you forgot to add a comment</p>
             <input type="submit" value="Save" ng-disabled="commentForm.$invalid"/>
           </form>
         </div>        
