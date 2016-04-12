@@ -26,9 +26,9 @@ angular.module('trailApp', [
                 controller: 'introCtrl',
                 controllerAs: 'intro' 
               },
-              'bkgd': { 
-                templateUrl: 'app/bkgd/bkgd.html',
-                controller: 'bkgdCtrl' 
+              'homeBkgd': { 
+                templateUrl: 'app/homeBkgd/homeBkgd.html',
+                controller: 'homeBkgdCtrl' 
               }
         }
      })
