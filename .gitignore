@@ -35,4 +35,4 @@ db/
 # client/scripts/scripts.js
 # client/styles/main.css
 
-server/config.js
+.DS_Store
