@@ -5835,6 +5835,7 @@ button.close {
   box-sizing: border-box; }
 
 .bg_container {
+  background-color: aquamarine;
   position: relative;
   padding: 70px 0 10px 0; }
   .bg_container ul {
