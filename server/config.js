@@ -5,8 +5,8 @@ config.TRAILS = {};
 config.GEO = {};
 
 //auth sandbox key
-config.INSTA.CLIENT_ID = "c1a9f0d89b214eaf9bf1007272c94511";
-config.INSTA.CLIENT_SECRET ="e3b7f57fa5d54507af11ed94cb34712e";
+config.INSTA.CLIENT_ID = "de649028be004059b5934bf34230202a";
+config.INSTA.CLIENT_SECRET ="b767cde2ba1a4b1ebbef244268d79a9e";
 
 
 config.REDIRECT_URL ="http://localhost:3000/handle_auth";
