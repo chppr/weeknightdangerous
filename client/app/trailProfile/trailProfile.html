@@ -32,11 +32,17 @@
       
       <div class="col-md-4">
         <ng-map center="[{{profile.data.lat}}, {{profile.data.lon}}]">
+          <directions
+            draggable="true"
+            travel-mode="DRIVING"
+            origin="current-location"
+            destination="{{profile.data.lat}}, {{profile.data.lon}}">
+          </directions>
           <marker position="[{{profile.data.lat}}, {{profile.data.lon}}]" title="marker" animation="Animation.DROP"></marker>
         </ng-map>
-        <h3>Directions:</h3>
+        <!--<h3>Directions:</h3>
         <p> {{ profile.data.directions }} </p>
-      </div>
+      </div>-->
       <div class="col-md-8">
         <p>{{profile.data.description}}</p>
       </div>

@@ -9,6 +9,7 @@ config.INSTA.CLIENT_ID = process.env.TRAILAPP_CLIENT_ID;
 config.INSTA.CLIENT_SECRET = process.env.TRAILAPP_CLIENT_SECRET;
 
 
+
 config.REDIRECT_URL = process.env.TRAILAPP_REDIRECT_URL;
 //"http://localhost:3000/handle_auth";
 
