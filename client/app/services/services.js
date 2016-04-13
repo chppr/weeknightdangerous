@@ -6,6 +6,7 @@ angular.module('trailApp.services', ['ngCookies'])
   showTrails.list = {};
   showTrails.location;
 
+      // TODO - rename w/ better name - unclear if this is searched loc or users' current loc
   //store the user's location query (city, state) in showTrails.location
   var userLocation = function(params) {
     showTrails.location = params;
