@@ -81,7 +81,12 @@ angular.module('trailApp.services', ['ngCookies'])
   //get user name info
   var getUser = function () {
     if (cookie !== undefined) {
-      return cookie.username;
+      if (!cookie.username) {
+        return "Friend"
+      }
+      else {
+        return cookie.username;
+      }
    }
   };
   //get user image
