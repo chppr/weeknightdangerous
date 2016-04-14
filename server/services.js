@@ -60,12 +60,9 @@ exports.userFavs = function(req, res) {
     })
 };
 
-exports.allTrailComments = function(req, res) {
-  dbhelpers.trailComments(req.body.trailId)
-    .then(function(resp){
-      res.send(resp)
-    })
-}
+
+
+
 
 
 

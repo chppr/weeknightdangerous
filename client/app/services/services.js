@@ -1,5 +1,8 @@
 angular.module('trailApp.services', ['ngCookies'])
 
+// make a get weather fn here (factory?)
+
+
 .factory('showTrails', function($http) {
 	var showTrails = this;
 	showTrails.trailId = 0;
