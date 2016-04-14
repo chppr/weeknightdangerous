@@ -3,6 +3,11 @@ var config = {};
 config.INSTA = {};
 config.TRAILS = {};
 config.GEO = {};
+config.FLICKR = {};
+
+//flickr config
+config.FLICKR.CLIENT_ID = process.env.TRAILAPP_FLICKR_KEY;
+config.FLICKR.CLIENT_SECRET = process.env.TRAILAPP_FLICKR_SECRET;
 
 //auth sandbox key
 config.INSTA.CLIENT_ID = process.env.TRAILAPP_CLIENT_ID;

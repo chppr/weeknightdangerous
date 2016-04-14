@@ -1,41 +1,43 @@
+<div class="jumbotron jtron">
+	<h2 class="results-title" ng-hide="trails.loader">Trails in {{trails.city}}, {{trails.state}}</h2>
+</div>
+
 <div class="container">
-  <div ng-show="trails.loader" class="loader-wrapper">
-  	<h2 class="text-center">Searching</h2>
-    <div ng-show="trails.loader" class="loader"></div>
-  </div>
-  <div class="trailsListContainer">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="trails">
-        <h2 class="results-title" ng-hide="trails.loader">Trails in {{trails.city}}, {{trails.state}}</h2>
-        <!-- No trails message -->
-        <div ng-if="trails.noTrials" class="trail">
-          <h3>Sorry, there's no trails available at this time. Please check back later</h3>
-          <button ui-sref="home" class="btn btn-primary btn-lg btn-block">Go back</button>
-        </div>
-        <div ng-hide="trails.loader" ng-repeat="trail in trails.data | orderBy: '-rating'" class="trail" >
-          <div class="row">
-            <div class="col-md-2">
-              <img class="img-responsive" src={{trail.thumbnail}}></img>
-            </div>
-            <div class="col-md-7">
-              <h3>{{trail.name}}</h3>
-              <div class="trailsStars">
-                <span ng-repeat="rating in ratings">
+	<div ng-show="trails.loader" class="loader-wrapper">
+		<h2 class="text-center">Searching</h2>
+		<div ng-show="trails.loader" class="loader"></div>
+	</div>
+	
+	<div class="trailsListContainer">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="trails">
+					<!-- No trails message -->
+					<div ng-if="trails.noTrials" class="trail">
+						<h3>Sorry, there's no trails available at this time. Please check back later</h3>
+						<button ui-sref="home" class="btn btn-primary btn-lg btn-block">Go back</button>
+					</div>
+					<div ng-hide="trails.loader" ng-repeat="trail in trails.data | orderBy: '-rating'" class="trail">
+						<div class="row">
+							<div class="col-md-2">
+								<img class="img-responsive" src={{trail.thumbnail}}></img>
+							</div>
+							<div class="col-md-7">
+								<h3>{{trail.name}}</h3>
+								<div class="trailsStars">
+									<span ng-repeat="rating in ratings">
                   <div star-rating rating-value=trail.rating max="rating.max" ></div>
                 </span>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <button
-                class="btn btn-primary btn-lg btn-block"
-                ng-click="trails.getTrail(trail)">
-                More
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<button class="btn btn-primary btn-lg btn-block" ng-click="trails.getTrail(trail)">
+									More
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

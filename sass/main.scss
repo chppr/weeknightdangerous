@@ -44,44 +44,40 @@
     font-weight: normal;
     font-style: normal;
 }
-$tGreen : #5FC67A;
 
 
-.explore {
-	color:$tGreen;
-	font-size: 20rem;
-	z-index: 10;
-	font-family: 'rissa';
-	right: 0;
-	left: 0;
-	margin: auto;
-	position: absolute;
-	top: 35%;
-	-webkit-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-	text-align: center;
-}
+
 
 .input_search_box {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #fefcf6;
   color: #3e3007;
 }
-h1,h2,h3{
-  font-family: 'Permanent Marker', cursive;
-}
-h1 {
-    color: white;
-    margin-bottom: 60px;
-  	font-size: 3.5rem;
+h1,h2,h3,h4,a{
+  font-family: 'Open Sans', 'Helvetica Neue';
+	color: white;
 }
 
-h2 {
-    color: white;
-    margin-bottom: 25px;
-    font-size: 3.2em;
+.navvy {
+	padding-top: 15px;
+	a, h3 {
+		color: white!important;
+		font-size: 16px!important;
+		font-weight: 400;
+	}
 }
+
+//h1 {
+//    color: white;
+//    margin-bottom: 60px;
+//  	font-size: 3.5rem;
+//}
+//
+//h2 {
+//    color: white;
+//    margin-bottom: 25px;
+//    font-size: 3.2em;
+//}
 .loader{
   background: transparent url('../img/ripple.gif') no-repeat;
   background-position: center center;

@@ -60,6 +60,12 @@
   animation: 1s disappear;    
   }
 }
+
+.jtron {
+	height: 45vh;
+	width: 100%;
+	position: relative;
+}
 @media (max-width: $screen-xs-max) {
   .fader {
     width: 100%;

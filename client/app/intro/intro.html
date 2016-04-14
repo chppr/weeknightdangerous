@@ -1,20 +1,18 @@
- <div class="intro">
-	 <h2 class="explore">adventure</h2>
-	 <form name="queryForm" class="form-horizontal city_state_form" ng-submit="intro.sendLocation(intro.location)" novalidate>
-		<div ng-hide="intro.loader" class="form-group form-group-lg">
+<div class="intro">
+	<h2 class="explore">Adventure</h2>
+	<h3 class="subExplore">awaits you.</h3>
+	<form name="queryForm" class="form-horizontal city_state_form" ng-submit="intro.sendLocation(intro.location)" novalidate>
+		<div ng-hide="intro.loader" class="form-group form-group-lg row">
 			<!-- <label class="sr-only" for="state"></label> -->
-			<div class="col-sm-6">
-				<input name="city" ng-model="intro.location.city" class="form-control" type="text"  placeholder="Enter a city here" required>
+			<div class="col-sm-4 col-md-4 searchBar">
+				<input name="city" ng-model="intro.location.city" class="form-control" type="text" placeholder="Enter a city here" required>
 			</div>
-			<div class="col-sm-6">
-				<input ng-model="intro.location.state" class="form-control" type="text" placeholder="Enter a state here"  required>
+			<div class="col-sm-4 col-md-4 searchBar">
+				<input ng-model="intro.location.state" class="form-control" type="text" placeholder="Enter a state here" required>
 			</div>
-		</div>
-		<div class="row">
-			<div ng-hide="loader" class="col-xs-12">
-				<input class="btn btn-primary btn-lg active goBtn btn-block" type="submit" value="GO!" />
+			<div ng-hide="loader" class="col-sm-4 col-md-4 searchBar">
+				<input class="btn btn-primary btn-lg active goBtn btn-block searchBtn" type="submit" value="EXPLORE" />
 			</div>
-
 		</div>
 	</form>
 </div>
