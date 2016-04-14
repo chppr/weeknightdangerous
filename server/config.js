@@ -28,4 +28,7 @@ config.GEO.KEY = process.env.TRAILAPP_GEO_KEY;
 //trails api key
 config.TRAILS.API_KEY = process.env.TRAILAPP_TRAILS_KEY;
 
+//500px api key
+config.PX500_KEY = process.env.TRAILAPP_PX500_KEY;
+
 module.exports = config;

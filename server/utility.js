@@ -64,3 +64,30 @@ exports.cleanGrams = function(feed){
   }
   return grams;
 }
+
+// Needs to possibly be rewritten for 500PX stream
+exports.cleanPX500 = function(feed){
+  var grams = [];
+  for (var i = 0; i < feed.data.length; i++) {
+    var obj = {};
+    var item = feed.data[i]
+
+    obj.link = item.link;
+    obj.image = {};
+    obj.image.low_res = {
+      "url":item.images.low_resolution.url,
+      "width":item.images.low_resolution.width,
+      "height":item.images.low_resolution.height
+    };
+    obj.image.high_res = {
+      "url":item.images.standard_resolution.url,
+      "width":item.images.standard_resolution.width,
+      "height":item.images.standard_resolution.height
+    };
+    obj.user ={};
+    obj.user.username = item.user.username;
+    obj.user.profile_pic = item.user.profile_picture;
+    grams.push(obj);
+  }
+  return grams;
+}

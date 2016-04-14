@@ -6,6 +6,7 @@ var trails = require('./api/trails');
 var auth = require('./auth');
 var db = require('./database/db');
 var ig = require('./api/instagram');
+var px500 = require('./api/px500');
 var geo = require('./api/geocode');
 var dbhelpers = require('./database/dbhelpers');
 var cookieParser = require('cookie-parser');
@@ -43,6 +44,9 @@ app.get('/api/trails/trail', trails.singleTrail);
 
 // This is your constrained homepage call for instagram bg images api call
 app.get('/api/insta/geo', ig.geoImages);
+
+// This is your constrained homepage call for 500px bg image api call
+app.get('/api/px500/geo', px500.geoImages);
 
 // This is your results page bg images api call
 app.get('/api/geo/loc', geo.geocode);
