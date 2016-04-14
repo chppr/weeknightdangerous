@@ -94,6 +94,7 @@ angular.module('trailApp.services', ['ngCookies'])
 
   //store the user's location query (city, state) in showTrails.location
   var userLocation = function(params) {
+		console.log('in usrLoc:',params)
     showTrails.location = params;
     // console.log('userLocation service: ', showTrails.location);
   }
@@ -320,9 +321,19 @@ angular.module('trailApp.services', ['ngCookies'])
         params: homeLoc
       })
   };
+	
+//	imageServices.emptyImg = function(){
+//		console.log('before emptyImg:', images)
+//		images = {};
+//		console.log('after emptyImg:', images)
+//		return Promise.resolve(images);
+//	}
+//	
+	
+	
   //get city/state images
   imageServices.locImages = function(placename){
-    //console.log('fired locImages')
+    console.log('fired locImages')
       images = $http({
         method: 'GET', 
         url: '/api/geo/loc',
@@ -377,11 +388,11 @@ angular.module('trailApp.intro', [])
 
 .controller('introCtrl', function($window, showTrails, imageService) {
   // hit the images service so the background can load
-  imageService.homeImages();
+//  imageService.homeImages();
+	
 
   var intro = this;
   var location = intro.location;
-
   intro.sendLocation = function(location) {
     //console.log('intro sendLocation: ', location)
 
@@ -394,7 +405,7 @@ angular.module('trailApp.intro', [])
 
 var trailsApp = angular.module('trailApp.topNav', [])
 
-.controller('topNav', function($window, Auth) {
+.controller('topNav', function($window, showTrails, Auth) {
 	var nav = this;
   nav.user;
   nav.image;
@@ -402,12 +413,16 @@ var trailsApp = angular.module('trailApp.topNav', [])
   //set the signInToggle to the returned value of service function that checks
   //if the user is signed. If user is signed in the signIn button and user profile on topNav
   //should be hidden and vise versa. 
-  nav.signInToggle = Auth.checkUser();; 
+  nav.signInToggle = Auth.checkUser();
 
   nav.signIn = function () {
     //redirect user to instagram to sign in
     $window.location.assign('/authorize_user');
   };
+	
+	nav.log = function(){
+		showTrails.empty();
+	}
 
   nav.myFav = function () {
     //redirect to the my favorites page
@@ -445,19 +460,21 @@ angular.module('trailApp.bkgd', [])
   imageService.getImages()
   .then(function(data){
     $scope.pics = data;
-  });
-
+  })
+	.catch(function(err){
+		console.log('err in bkgdImgService:' + err);
+	})
   //then watch the images for changes
-  $scope.$watch(function(){
-    return imageService.getImages(); // This returns a promise
-  }, function(images, oldImages){
-    if(images !== oldImages){ // if images promise changes reference
-      images.then(function(data){
-        $scope.pics = data;
-        //console.log('here is our data:',$scope.pics);
-      });
-    }
-  });
+//  $scope.$watch(function(){
+//    return imageService.getImages(); // This returns a promise
+//  }, function(images, oldImages){
+//    if(images !== oldImages){ // if images promise changes reference
+//      images.then(function(data){
+//        $scope.pics = data;
+//        //console.log('here is our data:',$scope.pics);
+//      });
+//    }
+//  });
 }]);
 
 angular.module('trailApp.profile', ['ui.bootstrap'])
@@ -630,7 +647,9 @@ angular.module('trailApp.trailsList', [])
         trails.state = capitalize(location.state);
         //get placename for bg
         var placename = {placename: trails.city + ',' + trails.state};
-        imageService.locImages(placename);
+				//calls the geoloc api, which calls the ig api
+        imageService.locImages(placename)
+				console.log('placename:' + placename)
         //end placename for bg
       })
       .catch(function(err) {

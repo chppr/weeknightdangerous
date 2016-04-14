@@ -2,11 +2,11 @@ angular.module('trailApp.intro', [])
 
 .controller('introCtrl', function($window, showTrails, imageService) {
   // hit the images service so the background can load
-  imageService.homeImages();
+//  imageService.homeImages();
+	
 
   var intro = this;
   var location = intro.location;
-
   intro.sendLocation = function(location) {
     //console.log('intro sendLocation: ', location)
 

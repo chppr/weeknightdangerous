@@ -13,7 +13,7 @@
           <h3>Sorry, there's no trails available at this time. Please check back later</h3>
           <button ui-sref="home" class="btn btn-primary btn-lg btn-block">Go back</button>
         </div>
-        <div ng-repeat="trail in trails.data | orderBy: '-rating'" class="trail" >
+        <div ng-hide="trails.loader" ng-repeat="trail in trails.data | orderBy: '-rating'" class="trail" >
           <div class="row">
             <div class="col-md-2">
               <img class="img-responsive" src={{trail.thumbnail}}></img>
@@ -27,7 +27,6 @@
               </div>
             </div>
             <div class="col-md-3">
-              
               <button
                 class="btn btn-primary btn-lg btn-block"
                 ng-click="trails.getTrail(trail)">

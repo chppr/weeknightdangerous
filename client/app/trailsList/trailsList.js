@@ -30,7 +30,9 @@ angular.module('trailApp.trailsList', [])
         trails.state = capitalize(location.state);
         //get placename for bg
         var placename = {placename: trails.city + ',' + trails.state};
-        imageService.locImages(placename);
+				//calls the geoloc api, which calls the ig api
+        imageService.locImages(placename)
+				console.log('placename:' + placename)
         //end placename for bg
       })
       .catch(function(err) {

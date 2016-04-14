@@ -2,10 +2,66 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "partials/bkgd";
 @import "partials/nav";
+@import "partials/homeBG";
 @import "partials/introForm";
 @import "partials/trailList";
 @import "partials/comments"; 
 @import "partials/trailProfile";
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+@include font-face("rissa", '/fonts/rissatypeface-webfont');
+@font-face {
+    font-family: 'rissa';
+    src: url('/fonts/rissatypeface-webfont.eot');
+    src: url('/fonts/rissatypeface-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/rissatypeface-webfont.woff') format('woff'),
+			   url('/fonts/rissatypeface-webfont.woff2') format
+         url('/fonts/rissatypeface-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+$tGreen : #5FC67A;
+
+
+.explore {
+	color:$tGreen;
+	font-size: 20rem;
+	z-index: 10;
+	font-family: 'rissa';
+	right: 0;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	top: 35%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
 
 .input_search_box {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -33,3 +89,6 @@ h2 {
   min-height: 200px;
   min-width: 100%;
   }
+
+
+

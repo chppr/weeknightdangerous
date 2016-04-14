@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  nav.navbar.navbar-inverse.navbar-fixed-top
+  nav.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topNav as nav")
     div.container
       div.navbar-header
-        a.navbar-brand(href="/#/")
+        a.navbar-brand(ng-click="nav.log()" href="/#/")
           span
             img(alt="brand" src="img/logo2.png")
           h1 TrailrPark
-      div.collapse.navbar-collapse(ng-controller="topNav as nav")
+      div.collapse.navbar-collapse
         ul.nav.navbar-nav
           li(ng-if="!nav.signInToggle")
             a(ng-click="nav.signIn()") Sign In

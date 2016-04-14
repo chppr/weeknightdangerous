@@ -5918,17 +5918,50 @@ h3.navbar-text {
   width: 35px;
   margin-top: 20px; }
 
+.homeBG {
+  height: 100vh;
+  background-color: beige; }
+
+.overlayHome {
+  background-size: contain;
+  background-image: url(../img/pattern-overlay.png);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 120%; }
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+#indexvideo {
+  min-height: 100%;
+  background: #000;
+  min-width: 100%;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  overflow: hidden;
+  z-index: -100; }
+
 .city_state_form, .loader-wrapper {
   background: rgba(0, 0, 0, 0.8);
   padding: 5px 40px 40px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 150px auto 0;
+  position: relative;
   width: 50%;
   z-index: 10; }
   .city_state_form h2, .loader-wrapper h2 {
     text-align: center; }
+
+.city_state_form {
+  right: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
 
 .ng-invalid.ng-dirty {
   border-color: #FA787E; }
@@ -6083,6 +6116,32 @@ ul.rating {
 
 #map {
   height: 400px; }
+
+@font-face {
+  font-family: "rissa";
+  src: url("/fonts/rissatypeface-webfont.eot?") format("eot"), url("/fonts/rissatypeface-webfont.woff2") format("woff2"), url("/fonts/rissatypeface-webfont.woff") format("woff"), url("/fonts/rissatypeface-webfont.ttf") format("truetype"), url('/fonts/rissatypeface-webfont.svg#str-replace("rissa", " ", "_")') format("svg"); }
+
+@font-face {
+  font-family: 'rissa';
+  src: url("/fonts/rissatypeface-webfont.eot");
+  src: url("/fonts/rissatypeface-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/rissatypeface-webfont.woff") format("woff"), url("/fonts/rissatypeface-webfont.woff2") format url("/fonts/rissatypeface-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+.explore {
+  color: #5FC67A;
+  font-size: 20rem;
+  z-index: 10;
+  font-family: 'rissa';
+  right: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 35%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center; }
 
 .input_search_box {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -1,13 +1,26 @@
 .city_state_form, .loader-wrapper {
   background: rgba(0, 0, 0, 0.8);
   padding: 5px 40px 40px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 150px auto 0;
+  position: relative;
   width:50%;
   z-index: 10;
   h2{text-align: center;}
+}
+
+
+@mixin vertical-align($position: absolute) {
+	right: 0;
+	left: 0;
+	margin: auto;
+  position: $position;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.city_state_form  {
+  @include vertical-align();
 }
 
 .ng-invalid.ng-dirty {
