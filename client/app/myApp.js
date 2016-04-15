@@ -1,18 +1,19 @@
 angular.module('trailApp', [
-	'ui.bootstrap',
-	'trailApp.services',
-	'trailApp.intro',
-	'trailApp.topNav',
-	'trailApp.bkgd',
-	'trailApp.profile',
-	'trailApp.myFav',
-	'trailApp.comment',
-	'trailApp.trailsList',
-	'ngCookies',
-	'ui.router',
-	'ngAnimate',
-	'ngMap'
-	])
+  'ui.bootstrap',
+  'trailApp.weather',
+  'trailApp.services',
+  'trailApp.intro',
+  'trailApp.topNav',
+  'trailApp.bkgd',
+  'trailApp.profile',
+  'trailApp.myFav',
+  'trailApp.comment',
+  'trailApp.trailsList',
+  'ngCookies',
+  'ui.router',
+  'ngAnimate',
+  'ngMap'
+  ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $stateparams) {
 	$urlRouterProvider.otherwise('/home');
@@ -36,6 +37,7 @@ angular.module('trailApp', [
 				url: '/trailsList',
 				views: {
 
+<<<<<<< b13b2b4712d2ac40c235dee3cd6c43721b11b1d7
 							'trailsList': {
 								templateUrl: 'app/trailsList/trailsList.html',
 								controller: 'TrailsListCtrl',
@@ -50,6 +52,24 @@ angular.module('trailApp', [
 			.state("trail", {
 				url:'/trail/:trailId',
 				views: {
+=======
+              'trail': {
+                templateUrl: 'app/trailProfile/trailProfile.html',
+                controller: 'profileCtrl',
+                controllerAs: 'profile'
+              },
+              'comment': {
+                templateUrl: 'app/comment/comment.html',
+                controller: 'commentsCtrl',
+                controllerAs: 'comments'
+              },
+              'weather': {
+                templateUrl: 'app/weather/weather.html',
+                controller: 'weatherCtrl',
+              //  controllerAs: 'weather'
+              }
+        }
+>>>>>>> getting somewhere in weather land
 
 							'trail': {
 								templateUrl: 'app/trailProfile/trailProfile.html',

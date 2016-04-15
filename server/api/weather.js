@@ -67,6 +67,6 @@ exports.getCurrentWeather = function(req, res){
       weather_status : access[4].icon
       }
 
-    res.json(fiveDayWeatherArr);
+    return res.json(fiveDayWeatherArr);
   })
 }

@@ -1,18 +1,19 @@
 angular.module('trailApp.weather', [])
 
-.controller('weatherCtrl', function($window, showTrails, imageService) {
-  // hit the images service so the background can load
-  imageService.homeImages();
+.controller('weatherCtrl', function($scope) {
+ // var weather = this;
+  //  weather.weather = {};
+    // var location = weather.location;
+      console.log("I'm inside of weather.js");
 
-  var intro = this;
-  var location = intro.location;
-
-  intro.sendLocation = function(location) {
-    //console.log('intro sendLocation: ', location)
-
-    //send location to service showTrails.userLocation so it can be stored in the service for other controllers to access
-    showTrails.userLocation(location);
-    //redirect to /trailList
-    $window.location.href = '/#/trailsList'
-  }
+     // weather.getWeather = function () {
+     //    weather.getWeather( weather.weather)
+     //      .then(function (result) {
+     //          console.log("I am result in getWeather ", result);
+     //      })
+     //      .catch(function (err){
+     //          console.log("I am ERR : ", err);
+     //      }) 
+     // }
 });
+
