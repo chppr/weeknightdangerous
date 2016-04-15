@@ -276,8 +276,6 @@ angular.module('trailApp.services', ['ngCookies'])
 	return imageServices;
 }])
 
-		//below is for the star rating. It's ugly, but it works.
-		//The below is for the star rating. Needs added functionality and user input!
 .factory('weather', function($http) { // maybe not http?
   console.log("This inside of .factory", this);
     var weather = this;
@@ -288,17 +286,24 @@ angular.module('trailApp.services', ['ngCookies'])
       weather.location = params;
       // console.log('userLocation service: ', showTrails.location);
     }
-
  // VALIDATION LATER 
 
     var getWeather = function () {
-      return $http({
+    	console.log("I am weather.location inside .factory :", weather.location);
+    	console.log("I'm in client services.js - getWeather");
+     return $http({
         method : 'GET',
         url: '/weather',
         params :  weather.location
       })
-      .then(function (result) {console.log(result);})
-      .catch(function(err) { console.log("Error is ", err);})
+      .then(function (result) {
+      	console.log("I am getWeather - services.js result :", result);
+      	return result;
+      })
+
+      .catch(function(err) { 
+      	console.log("I am getWeather - services.js error is ", err);
+      })
 
     }
   return { userLocation : userLocation,

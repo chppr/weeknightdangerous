@@ -1,19 +1,22 @@
 angular.module('trailApp.weather', [])
 
-.controller('weatherCtrl', function($scope) {
- // var weather = this;
+.controller('weatherCtrl', function($scope, weather) {
+   $scope.weatherChannel = 'You have the weather channel';
+ // var weather = this; // controllerAs
   //  weather.weather = {};
-    // var location = weather.location;
-      console.log("I'm inside of weather.js");
+    var location = $scope.location;
+      console.log("I'm inside of client - weather.js ");
 
-     // weather.getWeather = function () {
-     //    weather.getWeather( weather.weather)
-     //      .then(function (result) {
-     //          console.log("I am result in getWeather ", result);
-     //      })
-     //      .catch(function (err){
-     //          console.log("I am ERR : ", err);
-     //      }) 
-     // }
+     $scope.getWeather = function () {
+        return weather.getWeather()
+          .then(function (result) {
+              console.log("client/weather/weather.js ln 12 :", result);
+              $scope.weatherChannel = result;
+          })
+          .catch(function (err){
+              console.log("client/weather/weather.js ln 15 :", err);
+          }) 
+     }
+     $scope.getWeather();
 });
 
