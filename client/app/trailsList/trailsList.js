@@ -10,30 +10,22 @@ angular.module('trailApp.trailsList', [])
   // test background image
   // $scope.bgImage = "https://drscdn.500px.org/photo/78568715/m%3D1080_k%3D1_a%3D1/71558b5c9cb25a7060542b219fca535c"
 
-  
 
   console.log("showTrails.location:",showTrails);
 
-  imageService.px500Images({lat:47.9691, lon:-123.4983, dist:1000});
+  imageService.px500Images({lat:30.2711286, lon:-97.7436995, dist:15});
+
+  // imageService.locImages("Austin,TX");
 
   imageService.getImages()
   .then(function(pic){
+    console.log(pic);
     $scope.bgImage = pic.data[randomNum()].image.high_res.url;
     console.log("$scope.bgImage:", $scope.bgImage);
   })
   .catch(function(err){
     console.log('err in BG getImage:', err);
   })
-
-  // trails.getBackground = function(trail) {
-  //   // call the service function that will store the trail in showTrails service.
-  //   var trailGeo = {
-  //     "lat": trail.lat,
-  //     "lon": trail.lon,
-  //     "dist": '1000'
-  //   };
-  //   imageService.px500Images(trailGeo);
-  //   imageServices.getImages();
 
 	trails.noTrials = false;
 
@@ -93,6 +85,7 @@ angular.module('trailApp.trailsList', [])
 
   function randomNum() {
     var result = Math.floor(Math.random() * 10);
+    console.log("RANDOM:",result);
     return result;
   }
 

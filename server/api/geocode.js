@@ -19,9 +19,10 @@ exports.geocode = function(req, res){
     req.query.lat = geocode.data.results[0].geometry.lat;
     req.query.lon = geocode.data.results[0].geometry.lng;
     //res.json(firstResultGeo);
-    console.log("IN GEOCODE.JS!");
     // return ig.geoImages(req,res)
-    return px500.geoImagesPx500(req,res)
+    var geoImages = px500.geoImagesPx500(req,res)
+    console.log("IN GEOCODE.JS:", geocode.data.results[0]);
+    return geoImages;
   })
   .catch(function(err){
     console.log(err);

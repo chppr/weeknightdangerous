@@ -65,7 +65,6 @@ exports.cleanGrams = function(feed){
   return grams;
 }
 
-// Needs to possibly be rewritten for 500PX stream
 exports.cleanPx500 = function(feed){
   var px = [];
   // console.log("FEED:",feed);
@@ -80,7 +79,6 @@ exports.cleanPx500 = function(feed){
     px.push(obj);
   }
   console.log("BG PIC CLEAN:", px);
-  // console.log("BG PIC CLEAN:", px[2].image.high_res.url);
-  // return px[0].image.high_res.url;
   return px;
+  // return px[0].image.high_res.url;
 }
