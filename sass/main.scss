@@ -5,7 +5,7 @@
 @import "partials/homeBG";
 @import "partials/introForm";
 @import "partials/trailList";
-@import "partials/comments"; 
+@import "partials/comments";
 @import "partials/trailProfile";
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
@@ -35,56 +35,88 @@
 }
 @include font-face("rissa", '/fonts/rissatypeface-webfont');
 @font-face {
-    font-family: 'rissa';
-    src: url('/fonts/rissatypeface-webfont.eot');
-    src: url('/fonts/rissatypeface-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/rissatypeface-webfont.woff') format('woff'),
-			   url('/fonts/rissatypeface-webfont.woff2') format
-         url('/fonts/rissatypeface-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+		font-family: 'rissa';
+		src: url('/fonts/rissatypeface-webfont.eot');
+		src: url('/fonts/rissatypeface-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/rissatypeface-webfont.woff') format('woff'),
+				 url('/fonts/rissatypeface-webfont.woff2') format
+				 url('/fonts/rissatypeface-webfont.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
 }
 
 
-
-
+body {
+	height: 100vh!important;
+}
 .input_search_box {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #fefcf6;
-  color: #3e3007;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #fefcf6;
+	color: #3e3007;
 }
-h1,h2,h3,h4,a{
-  font-family: 'Open Sans', 'Helvetica Neue';
+
+.trails {
+	h3 {
+		color:black;
+		font-family:'Open Sans';
+		font-weight: 100;
+	}
+}
+.trailsListContainer{
+	overflow-x: hidden;
+	overflow-y: scroll;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 40%;
+	height: 65vh!important;
+	position: absolute;
+	z-index: 20;
+}
+
+h1,h2,h3,h4,a,p{
+	font-family: 'Open Sans', 'Helvetica Neue';
 	color: white;
+}
+textarea {
+resize: none;
+width:100%
 }
 
 .navvy {
 	padding-top: 15px;
 	a, h3 {
-		color: white!important;
+		color: black!important;
 		font-size: 16px!important;
 		font-weight: 400;
 	}
 }
 
-//h1 {
-//    color: white;
-//    margin-bottom: 60px;
-//  	font-size: 3.5rem;
-//}
-//
-//h2 {
-//    color: white;
-//    margin-bottom: 25px;
-//    font-size: 3.2em;
-//}
+
 .loader{
-  background: transparent url('../img/ripple.gif') no-repeat;
-  background-position: center center;
-  display: block;
-  min-height: 200px;
-  min-width: 100%;
-  }
+	background: transparent url('../img/ripple.gif') no-repeat;
+	background-position: center center;
+	display: block;
+	min-height: 200px;
+	min-width: 100%;
+	}
 
 
+.brandNavvy {
+	letter-spacing: 5px;
+	margin-top: 15px;
+	/* width: 100%; */
+	font-size: 22px;
+	/* height: 100%; */
+	position: absolute;
+	margin-left: 10px;
+}
+
+.navvyT {
+	color: #5FC67A;
+	font-weight: 600;
+}
+.navvyB {
+	font-weight: 100;
+}
 

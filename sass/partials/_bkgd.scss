@@ -1,96 +1,104 @@
 @keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 @keyframes disappear {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 *, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .bg_container {
-  position: relative;
-  padding:70px 0 10px 0;
-  ul {
-    width:100%; 
-    height:100%;
-    list-style: none;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    clear: both;
-    position: fixed;
-    opacity: .5;
-  }
-  &.profile_slides{
-    ul {
-      position: relative;
-      opacity: 1;
-    }
-  }
+	position: relative;
+	padding:70px 0 10px 0;
+	ul {
+		width:100%;
+		height:100%;
+		list-style: none;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		clear: both;
+		position: fixed;
+		opacity: .5;
+	}
+	&.profile_slides{
+		ul {
+			position: relative;
+		}
+	}
 }
 .fader, .slide {
-  height: auto;
-  position: relative;
-  float: left;
-  margin: 0 0 0 0;
-  transition: 0.8s ease;
-  img{
-    max-width: none;
-    width: 100%;
-    position: absolute;
-    padding: 5px;
-    top: 0;
-    left: 0;
-  }
-  &.ng-enter{
-    animation: 2s appear;
-  }
-  &.ng-leave{
-  animation: 1s disappear;    
-  }
+	height: auto;
+	position: relative;
+	float: left;
+	margin: 0 0 0 0;
+	transition: 0.8s ease;
+	img{
+		max-width: none;
+		width: 100%;
+		position: absolute;
+		padding: 5px;
+		top: 0;
+		left: 0;
+	}
+	&.ng-enter{
+		animation: 2s appear;
+	}
+	&.ng-leave{
+	animation: 1s disappear;
+	}
 }
 
 .jtron {
-	height: 45vh;
+	text-align: center;
+	background-position: center;
+	height: 75vh;
 	width: 100%;
 	position: relative;
+	background-image: url(/img/tempTrail.jpg);
+	background-size:cover;
+	background-repeat: no-repeat;
+
+	p {
+		margin-bottom: -20px;
+	}
 }
 @media (max-width: $screen-xs-max) {
-  .fader {
-    width: 100%;
-    padding-bottom: 100%;
-  }
+	.fader {
+		width: 100%;
+		padding-bottom: 100%;
+	}
 }
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-   .fader {
-    width: 20%;
-    padding-bottom: 20%;
-  }
-  .slide{
-      width: 20%;
-      padding-bottom: 20%;
-    }
+	 .fader {
+		width: 20%;
+		padding-bottom: 20%;
+	}
+	.slide{
+			width: 20%;
+			padding-bottom: 20%;
+		}
 }
 @media (min-width: $screen-md-min) {
-   .fader {
-      width: 11.11%;
-      padding-bottom: 11.11%;
-    }
-    .slide{
-      width: 6.25%;
-      padding-bottom: 6.25%;
-    }
+	 .fader {
+			width: 11.11%;
+			padding-bottom: 11.11%;
+		}
+		.slide{
+			width: 6.25%;
+			padding-bottom: 6.25%;
+		}
 }
 
 
