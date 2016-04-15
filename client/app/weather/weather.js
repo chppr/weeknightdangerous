@@ -5,6 +5,7 @@ angular.module('trailApp.weather', [])
  // var weather = this; // controllerAs
   //  weather.weather = {};
     var location = $scope.location;
+    console.log("scope.location ", location);
       console.log("I'm inside of client - weather.js ");
 
      $scope.getWeather = function () {
@@ -12,6 +13,7 @@ angular.module('trailApp.weather', [])
           .then(function (result) {
               console.log("client/weather/weather.js ln 12 :", result);
               $scope.weatherChannel = result;
+             $scope.currentlocation = result.location;
           })
           .catch(function (err){
               console.log("client/weather/weather.js ln 15 :", err);

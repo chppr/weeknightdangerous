@@ -298,6 +298,7 @@ angular.module('trailApp.services', ['ngCookies'])
       })
       .then(function (result) {
       	console.log("I am getWeather - services.js result :", result);
+      	result.location = weather.location;
       	return result;
       })
 

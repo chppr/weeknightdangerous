@@ -9,13 +9,91 @@ exports.getCurrentWeather = function(req, res) {
     //get our location and distance info for the api call
     var city = req.query.city;
     var state = req.query.state;
+
+    console.log("I am city ", city);
+    console.log("I am state", state);
+
+    var cleanCity = function (city){
+       return city.split(' ').join("_").split('-').join("_");
+    }
+
+   var cleanedCity = cleanCity(city);
+
+   state_abbr             = {
+    'alabama'             :  'AL' ,
+    'alaska'              :  'AK' ,
+    'arizona'             :  'AZ' ,
+    'arkansas'            :  'AR' ,
+    'california'          :  'CA' ,
+    'colorado'            :  'CO' ,
+    'connecticut'         :  'CT' ,
+    'delaware'            :  'DE' ,
+    'district of columbia':  'DC' ,
+    'florida'             :  'FL' ,
+    'georgia'             :  'GA' ,
+    'hawaii'              :  'HI' ,
+    'idaho'               :  'ID' ,
+    'illinois'            :  'IL' ,
+    'indiana'             :  'IN' ,
+    'iowa'                :  'IA' ,
+    'kansas'              :  'KS' ,
+    'kentucky'            :  'KY' ,
+    'louisiana'           :  'LA' ,
+    'maine'               :  'ME' ,
+    'maryland'            :  'MD' ,
+    'massachusetts'       :  'MA' ,
+    'michigan'            :  'MI' ,
+    'minnesota'           :  'MN' ,
+    'mississippi'         :  'MS' ,
+    'missouri'            :  'MO' ,
+    'montana'             :  'MT' ,
+    'nebraska'            :  'NE' ,
+    'nevada'              :  'NV' ,
+    'new hampshire'       :  'NH' ,
+    'new jersey'          :  'NJ' ,
+    'new mexico'          :  'NM' ,
+    'new york'            :  'NY' ,
+    'north carolina'      :  'NC' ,
+    'north dakota'        :  'ND' ,
+    'ohio'                :  'OH' ,
+    'oklahoma'            :  'OK' ,
+    'oregon'              :  'OR' ,
+    'pennsylvania'        :  'PA' ,
+    'rhode island'        :  'RI' ,
+    'south carolina'      :  'SC' ,
+    'south dakota'        :  'SD' ,
+    'tennessee'           :  'TN' ,
+    'texas'               :  'TX' ,
+    'utah'                :  'UT' ,
+    'vermont'             :  'VT' ,
+    'virginia'            :  'VA' ,
+    'washington'          :  'WA' ,
+    'west virginia'       :  'WV' ,
+    'wisconsin'           :  'WI' ,
+    'wyoming'             :  'WY' 
+  }
+
+   var cleanState = function (state){
+    state.toLowerCase();
+      for (var key in state_abbr) {
+        if (state === key) {
+          state = state_abbr[key];
+        }
+      }
+      return state;
+   }
+   var cleanedState = cleanState(state);
+
+
+    console.log("the string clean city :", cleanCity(city));
+
     console.log("inside currentweather - weather.js - city is ", city);
     console.log("inside currentweather - weather.js - state is ", state);
     //replace CITY STATE
     // http://api.wunderground.com/api/e4bf38a4ac0d99b1/forecast/q/CA/San_Francisco.json
     axios({
             method: 'get',
-            url: 'http://api.wunderground.com/api/e4bf38a4ac0d99b1/forecast/q/' + 'CA' + '/' + 'San_Francisco' + '.json',
+            url: 'http://api.wunderground.com/api/e4bf38a4ac0d99b1/forecast/q/' + cleanedState + '/' + cleanedCity + '.json',
             headers: {}
         })
         .then(function(weatherData) {
