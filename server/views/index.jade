@@ -2,35 +2,38 @@ extends layout
 
 block content
 
-  nav.navbar.navbar-inverse.navbar-fixed-top.navvy(ng-controller="topNav as nav")
-    div.container
-      div.navbar-header
-        a.navbar-brand( href="/#/")
-          span
-            img(alt="brand" src="img/greenLogo.png")
-          h1 TrailBlzr
-      div.collapse.navbar-collapse
-        ul.nav.navbar-nav.navbar-right
-          li(ng-if="!nav.signInToggle")
-            a(ng-click="nav.signIn()") Sign In
-          li(ng-if="nav.signInToggle")
-            a(ng-click="nav.signOut()") Sign Out
-          li(ng-if="nav.signInToggle")
-            a(ng-click="nav.myFav()") My Favorites
-        ul.navbar-right
-          li
-            img(ng-class="{'img-circle':nav.signInToggle}" src="{{nav.image}}")
-            h3.navbar-text(ng-if="nav.signInToggle") Hi, {{ nav.user }}
-
-  .intro(ui-view="intro") 
-  .trailList(ui-view="trailsList")
-  .trailProfile(ui-view="trail")
-  .myFav(ui-view="myFav") 
-  .bkgd(ui-view="bkgd")
-  .homeBkgd(ui-view="homeBkgd")
-  .weather(ui-view="weather")
-  .comment(ui-view="comment")
+	nav.navbar.navbar-inverse.navbar-fixed-top.navvy(ng-controller="topNav as nav")
+		div.container
+			div.navbar-header
+				a.navbar-brand( href="/#/")
+					span
+						img(alt="brand" src="img/greenLogo.png")
+					span.brandNavvy
+						span.navvyT Trail
+						span.navvyB Blzr
+			div.collapse.navbar-collapse
+				ul.nav.navbar-nav.navbar-right
+					li(ng-if="!nav.signInToggle")
+						a(ng-click="nav.signIn()") Sign In
+					li(ng-if="nav.signInToggle")
+						a(ng-click="nav.signOut()") Sign Out
+					li(ng-if="nav.signInToggle")
+						a(ng-click="nav.myFav()") My Favorites
+				ul.navbar-right
+					li
+						img(ng-class="{'img-circle':nav.signInToggle}" src="{{nav.image}}")
+						h3.navbar-text(ng-if="nav.signInToggle")
 
 
- 
+	.intro(ui-view="intro")
+	.trailList(ui-view="trailsList")
+	.trailProfile(ui-view="trail")
+	.myFav(ui-view="myFav")
+	.bkgd(ui-view="bkgd")
+	.homeBkgd(ui-view="homeBkgd")
+	.weather(ui-view="weather")
+	.comment(ui-view="comment")
+
+
+
 

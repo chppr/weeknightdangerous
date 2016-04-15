@@ -1,50 +1,73 @@
-.trailsListContainer{
-  position: absolute;
-  z-index: 20;
-  padding-right: 100px;
+.jtronTxt {
+ margin-top: 80px;
+
+}
+
+.trails {
+	box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.50);
+	width: 68%;
+	margin: 0 auto;
+
+}
+.trails {
+	div:first-child {
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+}
+
+.trail {
+	color: #fff;
+	font-size: 1.25em;
+	background: #F2F2F2;
+	padding: 20px;
+	border-bottom: 1px solid #aaa;
+	button{
+		background-color:#5FC67A;
+		border: 1px solid #5FC67A;
+		color: white;
+		margin-top: 50px;
+	}
 }
 .results-title{
-  color: #0056E0;
-  margin-top:85px;
-}
-.trails{
-  width: 80%;
-  margin: 0 auto;
-}
-.trail {
-  color: #fff;
-  font-size: 1.25em;
-  background: rgba(0, 0, 0, 0.9);
-  padding: 20px;
-  border-bottom: 1px solid #aaa;
-  button{
-    margin-top: 50px;
-  }
+	font-size: 18px!important;
+	font-style: italic;
 }
 
 .rating {
-   color:rgba(255,255,255,.5);
-   margin: 0;
-   padding: 0;
+	 color:rgba(165, 165, 165, 0.94);
+	 margin: 0;
+	 padding: 0;
 }
 ul.rating {
-   display: inline-block;
+	 display: inline-block;
 }
 .rating li {
-   list-style-type: none;
-   display: inline-block;
-   padding: 1px;
-   text-align: center;
-   font-weight: bold;
-   cursor: pointer;
+	 list-style-type: none;
+	 display: inline-block;
+	 padding: 1px;
+	 text-align: center;
+	 font-weight: bold;
+	 cursor: pointer;
 }
 .rating .filled {
-   color: rgba(0,86,224,1) ;
+	 color: #5FC67A;
+ ;
 }
- 
+
 .myFavContainer {
-  position: absolute;
-  z-index: 20;
-  padding-right: 100px;
-  top: 150px;
-} 
+	position: absolute;
+	z-index: 20;
+	padding-right: 100px;
+	top: 150px;
+}
+
+.trailsHH {
+	color: white;
+	font-family: 'rissa';
+	font-size: 13rem;
+	text-align: center;
+
+}
+
+

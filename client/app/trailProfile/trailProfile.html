@@ -1,53 +1,52 @@
-
 <div class="bg_container profile_slides">
-  <div class="loader" ng-show="profile.loading"></div>
-  <ul>
-    <li class="slide" ng-repeat="slide in profile.slides.data">
-      <img ng-click="profile.open(slide)" src="{{slide.image.low_res.url}}">
-    </li>
-  </ul>
+	<div class="loader" ng-show="profile.loading"></div>
+	<ul>
+		<li class="slide" ng-repeat="slide in profile.slides.data">
+			<img ng-click="profile.open(slide)" src="{{slide.image.low_res.url}}">
+		</li>
+	</ul>
 </div>
 <div class="profile">
-  <div class="container">
-  <a ui-sref="trailsList"> << back</a>
-    <div class="row">
-      <div class="col-md-9">
-        <h2>{{profile.data.name}}</h2>
-      </div>
 
-      <div class="col-md-12 infoWidget">
-         <div class="col-md-4 widget">
-          <span ng-repeat="rating in ratings">
-          <div star-rating rating-value=profile.rating max=5></div>
-          </span>
-        </div>
-        <div class="col-md-4 widget">       
-          <h4><span class="length">{{profile.data.length}} </span> miles</h4>
-        </div>
-        <div class="col-md-4 widget addFav">
-          <a ng-click="profile.addFav()" ng-show="profile.myFavAdd"><span class="heart">&#x2764 </span>add to favorites</a>
-          <a class="myFavAdded" ng-show="!profile.myFavAdd"><span class="heart">&#x2764 </span>Added to Favorites</a>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <ng-map center="[{{profile.data.lat}}, {{profile.data.lon}}]">
-          <directions
-            draggable="true"
-            travel-mode="DRIVING"
-            origin="current-location"
-            destination="{{profile.data.lat}}, {{profile.data.lon}}">
-          </directions>
-          <marker position="[{{profile.data.lat}}, {{profile.data.lon}}]" title="marker" animation="Animation.DROP"></marker>
-        </ng-map>
-        <!--<h3>Directions:</h3>
-        <p> {{ profile.data.directions }} </p>-->
-      </div>
-      <div class="col-md-8">
-        <p>{{profile.data.description}}</p>
-      </div>
-    </div>
-  </div>
+	<div class="col-md-12 infoWidget">
+		<div class="col-md-3 col-sm-3 col-xs-3 nameWidget">
+			<h3>{{profile.data.name}}</h3>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3 widget">
+			<h3><span class="length">{{profile.data.length}} </span><span class="miles"> miles</span></h3>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3 widget">
+			<span ng-repeat="rating in ratings">
+					<div star-rating rating-value=profile.rating max=5></div>
+					</span>
+		</div>
+
+		<div class="col-md-3 col-sm-3 col-xs-3 widget addFav">
+			<a ng-click="profile.addFav()" ng-show="profile.myFavAdd">
+				<span class="heart">&#x2764</span></a>
+			<h3>	add to favorites</h3>
+			<a class="myFavAdded" ng-show="!profile.myFavAdd"><span class="heart"> &#x2764 </span>Added to Favorites</a>
+		</div>
+	</div>
+
+<div class="container">
+	<!--  <a ui-sref="trailsList"> << back</a>-->
+	<div class="row" style="padding:0px 50px">
+		<div class="col-md-8">
+		<h3 style="font-weight:700; color:black">Description</h3>
+			<p>{{profile.data.description}}</p>
+		</div>
+		<div class="col-md-4">
+			<ng-map center="[{{profile.data.lat}}, {{profile.data.lon}}]">
+				<directions draggable="true" travel-mode="DRIVING" origin="current-location" destination="{{profile.data.lat}}, {{profile.data.lon}}">
+				</directions>
+				<marker position="[{{profile.data.lat}}, {{profile.data.lon}}]" title="marker" animation="Animation.DROP"></marker>
+			</ng-map>
+			<!--<h3>Directions:</h3>
+				<p> {{ profile.data.directions }} </p>-->
+		</div>
+	</div>
 </div>
-  
-      <!-- class="btn btn-primary btn-lg active" -->
+</div>
+
+<!-- class="btn btn-primary btn-lg active" -->

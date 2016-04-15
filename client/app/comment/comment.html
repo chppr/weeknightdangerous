@@ -1,27 +1,33 @@
-<div class="container"> 
-    <div class="col-md-12">
-      <div class="comments">    
-       <div class="row">
-       <!-- list of comments based on trailId -->
-        <div class="col-md-6 commentList">
-          <h3>User Comments:</h3>
-          <div class="single-comment" ng-repeat="comment in comments.data | filter:query | orderBy: 'created_at':true">
-            <img src="{{ comment.imageUrl }} " alt="user image" height="110" width="110">
-            <h4>{{ comment.full_name }} says,</h4>
-            <p>{{ comment.comment }}</p>
-          </div>
-        </div>  
-        <!-- Comment Form to submit comments -->
-        <div class="col-md-6 commentForm" ng-if="comments.user">
-          <form name="commentForm" ng-submit="comments.update(comments.text, commentForm.$valid)" novalidate>
-            <h3>Howdy, {{ comments.username }} </h3> 
-            <h4>Tell us your experience with this trail</h4>
-            <textarea name="comment" class="comment-text textarea" rows="10" cols="50" ng-model="comments.text" required /></textarea><br />
-              <p ng-show="commentForm.comment.$error.required">Oops you forgot to add a comment</p>
-            <input type="submit" value="Save" ng-disabled="commentForm.$invalid"/>
-          </form>
-        </div>        
-      </div>
-    </div>
-  </div>
-</div>        
+<div class="container">
+	<div class="col-md-12">
+		<div class="comments">
+			<div class="row">
+				<!-- Comment Form to submit comments -->
+
+				<div class="row commentForm" ng-if="comments.user">
+				<hr>
+					<h3 style="color:black;text-align:center; font-weight:700 ">User Comments:</h3>
+					<form style="width:100%" name="commentForm" ng-submit="comments.update(comments.text, commentForm.$valid)" novalidate>
+<!--						<h3 style="color:black;">YO, {{ comments.username }} </h3>-->
+						<h4 style="color:black;">Tell us your experience with this trail</h4>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<textarea name="comment" class="comment-text textarea" rows="10" cols="50" ng-model="comments.text" required /></textarea>
+						</div>
+						<br />
+						<p ng-show="commentForm.comment.$error.required">Oops you forgot to add a comment</p>
+						<input class="btn btn-lg btn-primary comBtn" type="submit" value="Submit" ng-disabled="commentForm.$invalid" />
+					</form>
+				</div>
+				<!-- list of comments based on trailId -->
+				<div class="row" style="margin-bottom:100px; width:100%">
+				<div class="row commentList">
+					<div class="single-comment" ng-repeat="comment in comments.data | filter:query | orderBy: 'created_at':true">
+						<img src="{{ comment.imageUrl }} " alt="user image" height="110" width="110">
+						<h4>{{ comment.full_name }} says,</h4>
+						<p>{{ comment.comment }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

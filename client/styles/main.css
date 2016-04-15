@@ -5847,8 +5847,7 @@ button.close {
     position: fixed;
     opacity: .5; }
   .bg_container.profile_slides ul {
-    position: relative;
-    opacity: 1; }
+    position: relative; }
 
 .fader, .slide {
   height: auto;
@@ -5869,9 +5868,16 @@ button.close {
     animation: 1s disappear; }
 
 .jtron {
-  height: 45vh;
+  text-align: center;
+  background-position: center;
+  height: 75vh;
   width: 100%;
-  position: relative; }
+  position: relative;
+  background-image: url(/img/tempTrail.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .jtron p {
+    margin-bottom: -20px; }
 
 @media (max-width: 767px) {
   .fader {
@@ -5895,10 +5901,16 @@ button.close {
     padding-bottom: 6.25%; } }
 
 .navbar {
+  background-color: white;
+  position: absolute;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.28);
   min-height: 65px; }
   .navbar h1 {
     display: inline-block;
     margin: 7px 0 0 15px; }
+
+.navFlip {
+  background-color: transparent; }
 
 .navbar-inverse .navbar-nav > li > a {
   font-size: 25px;
@@ -5906,9 +5918,10 @@ button.close {
   cursor: pointer; }
 
 .navbar-brand {
+  margin-top: -7px;
   padding: 2px 15px; }
   .navbar-brand span img {
-    width: 17%;
+    width: 25%;
     vertical-align: top;
     margin-top: 5px; }
 
@@ -5921,15 +5934,13 @@ h3.navbar-text {
   float: left;
   height: 35px;
   width: 35px;
-  margin-top: 20px; }
+  margin-top: 10px; }
 
 .homeBG {
   height: 100vh;
   background-color: beige; }
 
 .overlayHome {
-  background-size: contain;
-  background-image: url(../img/pattern-overlay.png);
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
@@ -5937,6 +5948,17 @@ h3.navbar-text {
   bottom: 0;
   left: 0;
   min-height: 120%; }
+
+.overlayTrails {
+  width: 100%;
+  display: table;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  /* right: 0; */
+  /* bottom: 0; */
+  /* left: 0; */
+  min-height: 100%; }
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 #indexvideo {
@@ -5949,12 +5971,21 @@ h3.navbar-text {
   z-index: -100;
   overflow: hidden; }
 
-.city_state_form, .loader-wrapper {
+.city_state_form {
   position: relative;
   width: 50%;
   z-index: 10; }
-  .city_state_form h2, .loader-wrapper h2 {
+  .city_state_form h2 {
     text-align: center; }
+
+.loader-wrapper {
+  top: 20%;
+  margin: auto;
+  position: absolute;
+  width: 50%;
+  z-index: 50;
+  left: 0;
+  right: 0; }
 
 .explore {
   color: #5FC67A;
@@ -6025,30 +6056,36 @@ h3.navbar-text {
 .input_search_box input.ng-valid.ng-touched {
   background-color: #78FA89; }
 
-.trailsListContainer {
-  position: absolute;
-  z-index: 20;
-  padding-right: 100px; }
-
-.results-title {
-  color: #0056E0;
-  margin-top: 85px; }
+.jtronTxt {
+  margin-top: 80px; }
 
 .trails {
-  width: 80%;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.5);
+  width: 68%;
   margin: 0 auto; }
+
+.trails div:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; }
 
 .trail {
   color: #fff;
   font-size: 1.25em;
-  background: rgba(0, 0, 0, 0.9);
+  background: #F2F2F2;
   padding: 20px;
   border-bottom: 1px solid #aaa; }
   .trail button {
+    background-color: #5FC67A;
+    border: 1px solid #5FC67A;
+    color: white;
     margin-top: 50px; }
 
+.results-title {
+  font-size: 18px !important;
+  font-style: italic; }
+
 .rating {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(165, 165, 165, 0.94);
   margin: 0;
   padding: 0; }
 
@@ -6064,7 +6101,7 @@ ul.rating {
   cursor: pointer; }
 
 .rating .filled {
-  color: #0056e0; }
+  color: #5FC67A; }
 
 .myFavContainer {
   position: absolute;
@@ -6072,73 +6109,112 @@ ul.rating {
   padding-right: 100px;
   top: 150px; }
 
-.comment {
-  background: #eee; }
-  .comment .container {
-    background: #fff; }
-  .comment .commentList {
-    padding: 0 0 0 40px; }
-    .comment .commentList .single-comment {
-      background-color: #F5F5F5;
-      margin: 20px 20px 0 0px;
-      padding: 10px; }
-      .comment .commentList .single-comment img {
-        float: left;
-        border-radius: 50%; }
-      .comment .commentList .single-comment p {
-        padding-left: 20px;
-        float: left; }
-      .comment .commentList .single-comment h4 {
-        margin: 20px 0 10px 130px; }
-  .comment .commentForm {
-    padding: 0 0px 0 30px; }
-    .comment .commentForm .h3 {
-      font-size: 0.8em; }
-    .comment .commentForm .comment-text {
-      border-radius: 20px;
-      background-color: #F5F5F5;
-      padding: 20px;
-      border: none;
-      outline: none; }
+.trailsHH {
+  color: white;
+  font-family: 'rissa';
+  font-size: 13rem;
+  text-align: center; }
+
+.comment .container {
+  background: #fff; }
+
+.comment .commentList {
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 700px;
+  padding: 20px; }
+  .comment .commentList .single-comment {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    margin: 20px 20px 0 0px;
+    padding: 10px; }
+    .comment .commentList .single-comment img {
+      height: 60px;
+      width: 60px;
+      float: left;
+      border-radius: 50%; }
+    .comment .commentList .single-comment p {
+      color: black;
+      padding-left: 70px;
+      float: left; }
+    .comment .commentList .single-comment h4 {
+      color: black;
+      font-weight: 600;
+      margin-left: 70px; }
+
+.comment .commentForm {
+  margin: auto;
+  max-width: 800px;
+  text-align: center; }
+  .comment .commentForm .h3 {
+    font-size: 0.8em; }
+  .comment .commentForm .comment-text {
+    border-radius: 20px;
+    background-color: #F5F5F5;
+    padding: 20px;
+    border: none;
+    outline: none; }
+
+.comBtn {
+  margin-top: -20px;
+  margin-bottom: 30px; }
 
 .favoriteButton {
   border-radius: 10px; }
 
 .profile {
-  background: #222;
-  color: #fff;
-  clear: both;
-  padding: 20px; }
+  background: white;
+  color: black !important;
+  clear: both; }
   .profile p {
-    font-size: 1.5em; }
+    font-size: 18px;
+    line-height: 35px;
+    color: black; }
   .profile .infoWidget {
-    background-color: rgba(119, 119, 119, 0.44);
-    border-radius: 20px 0 30px 0;
-    border: 1px solid darkgrey;
+    padding: 0px 70px;
+    height: 75px;
+    background-color: #E4E4E4;
     margin-bottom: 30px; }
     .profile .infoWidget .widget {
+      margin-top: 10px;
+      height: 60px;
       text-align: center;
-      padding: 10px 0;
-      margin: 0;
-      border-right: 1px solid darkgrey;
-      height: 79px; }
+      border-right: 1px solid darkgrey; }
+      .profile .infoWidget .widget h3 {
+        color: black !important;
+        margin-top: 18px;
+        margin-bottom: 0px; }
       .profile .infoWidget .widget .star-rating {
         padding-top: 3px; }
       .profile .infoWidget .widget ul.rating {
         font-size: 1.5em;
-        padding: 14px 0 0 15px; }
+        margin-top: 13px; }
       .profile .infoWidget .widget .length {
-        font-size: 2em; }
+        font-size: 26px; }
+      .profile .infoWidget .widget .miles {
+        font-weight: 200; }
       .profile .infoWidget .widget .heart {
         font-size: 2.8em;
         cursor: pointer; }
+    .profile .infoWidget .nameWidget {
+      text-align: right;
+      border-right: 1px solid;
+      margin-top: 10px;
+      height: 60px; }
+      .profile .infoWidget .nameWidget h3 {
+        margin-top: 18px;
+        color: #5FC67A;
+        font-weight: 600;
+        font-style: italic; }
     .profile .infoWidget .widget.addFav {
       border-right: none;
-      position: relative;
-      top: -5px; }
+      position: relative; }
+      .profile .infoWidget .widget.addFav h3 {
+        margin-left: 10px;
+        display: inline-block; }
       .profile .infoWidget .widget.addFav a {
         color: lightgrey;
-        font-size: 1.2em; }
+        font-size: 1rem; }
         .profile .infoWidget .widget.addFav a:hover {
           color: #0056e0;
           text-decoration: none; }
@@ -6147,7 +6223,7 @@ ul.rating {
         pointer-events: none; }
 
 .profile_slides {
-  background: #000;
+  background: white;
   overflow: hidden; }
 
 .gram-user {
@@ -6178,19 +6254,42 @@ ul.rating {
   font-weight: normal;
   font-style: normal; }
 
+body {
+  height: 100vh !important; }
+
 .input_search_box {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #fefcf6;
   color: #3e3007; }
 
-h1, h2, h3, h4, a {
+.trails h3 {
+  color: black;
+  font-family: 'Open Sans';
+  font-weight: 100; }
+
+.trailsListContainer {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 40%;
+  height: 65vh !important;
+  position: absolute;
+  z-index: 20; }
+
+h1, h2, h3, h4, a, p {
   font-family: 'Open Sans', 'Helvetica Neue';
   color: white; }
+
+textarea {
+  resize: none;
+  width: 100%; }
 
 .navvy {
   padding-top: 15px; }
   .navvy a, .navvy h3 {
-    color: white !important;
+    color: black !important;
     font-size: 16px !important;
     font-weight: 400; }
 
@@ -6200,3 +6299,19 @@ h1, h2, h3, h4, a {
   display: block;
   min-height: 200px;
   min-width: 100%; }
+
+.brandNavvy {
+  letter-spacing: 5px;
+  margin-top: 15px;
+  /* width: 100%; */
+  font-size: 22px;
+  /* height: 100%; */
+  position: absolute;
+  margin-left: 10px; }
+
+.navvyT {
+  color: #5FC67A;
+  font-weight: 600; }
+
+.navvyB {
+  font-weight: 100; }
