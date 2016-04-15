@@ -62,11 +62,11 @@ angular.module('trailApp', [
 								templateUrl: 'app/trailsList/trailsList.html',
 								controller: 'TrailsListCtrl',
 								controllerAs: 'trails'
-							},
-							'bkgd': {
-								templateUrl: 'app/bkgd/bkgd.html',
-								controller: 'bkgdCtrl'
 							}
+							// 'bkgd': {
+							// 	templateUrl: 'app/bkgd/bkgd.html',
+							// 	controller: 'bkgdCtrl'
+							// }
 				}
 			})
 			.state("trail", {
@@ -359,8 +359,9 @@ angular.module('trailApp.services', ['ngCookies'])
 	var images = {}
 	var imageServices = {};
 	//get home images
+
 	imageServices.homeImages = function(){
-		//console.log('fired home images')
+		// console.log('fired home images')
 			images = $http({
 				method: 'GET',
 				url: '/api/insta/geo',
@@ -379,7 +380,7 @@ angular.module('trailApp.services', ['ngCookies'])
 
 	//get city/state images
 	imageServices.locImages = function(placename){
-		console.log('fired locImages')
+		// console.log('fired locImages')
 			images = $http({
 				method: 'GET',
 				url: '/api/geo/loc',
@@ -388,16 +389,26 @@ angular.module('trailApp.services', ['ngCookies'])
 	};
 	//get trail images
 	imageServices.trailImages = function(geo){
-		//console.log('fired home images')
+		// console.log('fired home images')
 			images = $http({
 				method: 'GET',
 				url: '/api/insta/geo',
 				params: geo
 			})
 	};
+
+  imageServices.px500Images = function(geo){
+    // console.log('fired px500 image:', geo)
+      images = $http({
+        method: 'GET',
+        url: '/api/px500/geo',
+        params: geo
+      })
+  };
+
 	imageServices.getImages = function(){
-		//console.log('fired get images', images)
-		return images;
+		// console.log('fired get images', images);
+    return images;
 	}
 	return imageServices;
 }])
@@ -626,6 +637,7 @@ angular.module('trailApp.profile', ['ui.bootstrap'])
   //grab our background images
   imageService.getImages()
   .then(function(data){
+    console.log("DATA FROM TRAIL PROFILE:",data)
     profile.slides = data;
     profile.loading = false;
   });
@@ -694,19 +706,51 @@ angular.module('trailApp.comment', [])
 angular.module('trailApp.trailsList', [])
 
 .controller('TrailsListCtrl', function (showTrails, imageService, $state, $scope) {
-	var trails = this;
-	trails.data = [];
-	trails.city;
-	trails.state;
-	trails.noTrials= false;
+  var trails = this;
+  trails.data = [];
+  trails.city;
+  trails.state;
+  $scope.bgImage;
+
+  // test background image
+  // $scope.bgImage = "https://drscdn.500px.org/photo/78568715/m%3D1080_k%3D1_a%3D1/71558b5c9cb25a7060542b219fca535c"
+
+  
+
+  console.log("showTrails.location:",showTrails);
+
+  imageService.px500Images({lat:47.9691, lon:-123.4983, dist:1000});
+
+  imageService.getImages()
+  .then(function(pic){
+    $scope.bgImage = pic.data[randomNum()].image.high_res.url;
+    console.log("$scope.bgImage:", $scope.bgImage);
+  })
+  .catch(function(err){
+    console.log('err in BG getImage:', err);
+  })
+
+  // trails.getBackground = function(trail) {
+  //   // call the service function that will store the trail in showTrails service.
+  //   var trailGeo = {
+  //     "lat": trail.lat,
+  //     "lon": trail.lon,
+  //     "dist": '1000'
+  //   };
+  //   imageService.px500Images(trailGeo);
+  //   imageServices.getImages();
+
+	trails.noTrials = false;
+
 	//the below array is for the star ratings! Vital. Div will collapse if not here!
 	$scope.ratings = [{
 				current: 0,
 				max: 5
 	}];
+
 	//to get all the trails based on user's selected city and state (collected in the location object that's passed in)
 	trails.getList = function() {
-		trails.loader=true;
+		trails.loader = true;
 
 			return showTrails.getTrails()
 			.then(function (result) {
@@ -724,8 +768,8 @@ angular.module('trailApp.trailsList', [])
 				//get placename for bg
 				var placename = {placename: trails.city + ',' + trails.state};
 				//calls the geoloc api, which calls the ig api
-				imageService.locImages(placename)
-				console.log('placename:' + placename)
+				console.log('AT GEO LOC CALL', placename)
+        trails.background = imageService.locImages(placename);
 				//end placename for bg
 			})
 			.catch(function(err) {
@@ -740,7 +784,7 @@ angular.module('trailApp.trailsList', [])
 			"lon": trail.lon,
 			"dist": '1000'
 		};
-		//console.log('geo loc for trail:', trailGeo);
+		// console.log('geo loc for trail:', trailGeo);
 		imageService.trailImages(trailGeo);
 		showTrails.setTrail(trail);
 		var id = trail.unique_id;
@@ -748,9 +792,15 @@ angular.module('trailApp.trailsList', [])
 		$state.go('trail', { trailId: id});
 	}
 	//helper function to make sure the city and state inputed by the user are capitalized
-	function capitalize (string) {
+	function capitalize(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
+
+  function randomNum() {
+    var result = Math.floor(Math.random() * 10);
+    return result;
+  }
+
 	trails.getList()
 });
 

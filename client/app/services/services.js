@@ -233,8 +233,9 @@ angular.module('trailApp.services', ['ngCookies'])
 	var images = {}
 	var imageServices = {};
 	//get home images
+
 	imageServices.homeImages = function(){
-		//console.log('fired home images')
+		// console.log('fired home images')
 			images = $http({
 				method: 'GET',
 				url: '/api/insta/geo',
@@ -253,7 +254,7 @@ angular.module('trailApp.services', ['ngCookies'])
 
 	//get city/state images
 	imageServices.locImages = function(placename){
-		console.log('fired locImages')
+		// console.log('fired locImages')
 			images = $http({
 				method: 'GET',
 				url: '/api/geo/loc',
@@ -262,16 +263,26 @@ angular.module('trailApp.services', ['ngCookies'])
 	};
 	//get trail images
 	imageServices.trailImages = function(geo){
-		//console.log('fired home images')
+		// console.log('fired home images')
 			images = $http({
 				method: 'GET',
 				url: '/api/insta/geo',
 				params: geo
 			})
 	};
+
+  imageServices.px500Images = function(geo){
+    // console.log('fired px500 image:', geo)
+      images = $http({
+        method: 'GET',
+        url: '/api/px500/geo',
+        params: geo
+      })
+  };
+
 	imageServices.getImages = function(){
-		//console.log('fired get images', images)
-		return images;
+		// console.log('fired get images', images);
+    return images;
 	}
 	return imageServices;
 }])

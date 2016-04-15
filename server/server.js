@@ -45,8 +45,8 @@ app.get('/api/trails/trail', trails.singleTrail);
 // This is your constrained homepage call for instagram bg images api call
 app.get('/api/insta/geo', ig.geoImages);
 
-// This is your constrained homepage call for 500px bg image api call
-app.get('/api/px500/geo', px500.geoImages);
+// This is your call for 500px image api call
+app.get('/api/px500/geo', px500.geoImagesPx500);
 
 // This is your results page bg images api call
 app.get('/api/geo/loc', geo.geocode);

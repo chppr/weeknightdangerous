@@ -5,9 +5,9 @@ var axios = require('axios');
 var utilities = require('../utility');
 var app = express();
 
-var temp.key = "rDRcVzD651Ckj7CvKBebBvw4foWpiVr8cMZe80XC"
+// var tempKey = "rDRcVzD651Ckj7CvKBebBvw4foWpiVr8cMZe80XC"
 
-exports.geoImages = function(req, res){
+exports.geoImagesPx500 = function(req, res){
   //get our location and distance info for the api call
   var lat = req.query.lat;
   var lon = req.query.lon;
@@ -17,12 +17,18 @@ exports.geoImages = function(req, res){
 
   axios({
     method: 'get',
-    url: 'https://api.500px.com/v1/photos/search?term=hiking&tag=nature&rpp=5&consumer_key=' + config.PX500_KEY + 'image_size=6&sort=times_viewed&geo' + lat + '%2C' + lon + '%2C' + '25' + 'mi&width=%3E%3D1080&height=%3E%3D1920&image_size=1080',
+    url: 'https://api.500px.com/v1/photos/search?term=hiking&tag=nature&rpp=10&consumer_key=' + config.PX500_KEY + '&image_size=6&sort=times_viewed&geo' + lat + '%2C' + lon + '%2C' + '15' + 'mi&width=%3E%3D1080&height=%3E%3D1920&image_size=1080',
     headers: {}
   })
   .then(function(px500pics){
-    res.json(utilities.cleanGrams(px500pics.data));
+    // res.json(px500pics.data);
+    console.log("IN PX500:", px500pics);
+    res.json(utilities.cleanPx500(px500pics));
     //res.json(instaPics.data);
+  })
+  .catch(function(err){
+    console.log("ERROR in PX500",err);
+    return err;
   })
 }
 

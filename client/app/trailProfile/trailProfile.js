@@ -71,6 +71,7 @@ angular.module('trailApp.profile', ['ui.bootstrap'])
   //grab our background images
   imageService.getImages()
   .then(function(data){
+    console.log("DATA FROM TRAIL PROFILE:",data)
     profile.slides = data;
     profile.loading = false;
   });
