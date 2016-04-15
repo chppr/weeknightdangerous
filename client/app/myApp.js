@@ -83,5 +83,4 @@ angular.module('trailApp', [
 
         })
 
-
 }])

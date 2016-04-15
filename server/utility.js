@@ -64,3 +64,21 @@ exports.cleanGrams = function(feed){
   }
   return grams;
 }
+
+exports.cleanPx500 = function(feed){
+  var px = [];
+  // console.log("FEED:",feed);
+  for (var i = 0; i < feed.data.photos.length; i++) {
+    var obj = {};
+    var item = feed.data.photos[i]
+      obj.image = {};
+      obj.image.high_res = {
+        "url": item.image_url
+      }
+
+    px.push(obj);
+  }
+  console.log("BG PIC CLEAN:", px);
+  return px;
+  // return px[0].image.high_res.url;
+}

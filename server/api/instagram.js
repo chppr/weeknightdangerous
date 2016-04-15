@@ -9,7 +9,8 @@ exports.geoImages = function(req, res){
   //get our location and distance info for the api call
   var lat = req.query.lat;
   var lon = req.query.lon;
-  var dist = req.query.dist;
+  // var dist = req.query.dist;
+  var dist = 500;
 
   axios({
     method: 'get',
