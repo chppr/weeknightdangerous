@@ -10,6 +10,7 @@ var geo = require('./api/geocode');
 var dbhelpers = require('./database/dbhelpers');
 var cookieParser = require('cookie-parser');
 var services = require('./services');
+var weather = require('./api/weather');
 
 var app = express();
 
@@ -24,6 +25,9 @@ app.set('view engine', 'jade')
 app.get("/", function(req, res){
 	res.render('index')
 })
+
+// get weather call
+app.get('/weather', weather.getCurrentWeather);
 
 // This is where you would initially send users to authorize 
 app.get('/authorize_user', auth.authorize_user);

@@ -1,18 +1,39 @@
+angular.module('trailApp.weather', [])
+
+.controller('weatherCtrl', function($scope) {
+ // var weather = this;
+  //  weather.weather = {};
+    // var location = weather.location;
+      console.log("I'm inside of weather.js");
+
+     // weather.getWeather = function () {
+     //    weather.getWeather( weather.weather)
+     //      .then(function (result) {
+     //          console.log("I am result in getWeather ", result);
+     //      })
+     //      .catch(function (err){
+     //          console.log("I am ERR : ", err);
+     //      }) 
+     // }
+});
+
+
 angular.module('trailApp', [
-	'ui.bootstrap',
-	'trailApp.services',
-	'trailApp.intro',
-	'trailApp.topNav',
-	'trailApp.bkgd',
-	'trailApp.profile',
-	'trailApp.myFav',
-	'trailApp.comment',
-	'trailApp.trailsList',
-	'ngCookies',
-	'ui.router',
-	'ngAnimate',
-	'ngMap'
-	])
+  'ui.bootstrap',
+  'trailApp.weather',
+  'trailApp.services',
+  'trailApp.intro',
+  'trailApp.topNav',
+  'trailApp.bkgd',
+  'trailApp.profile',
+  'trailApp.myFav',
+  'trailApp.comment',
+  'trailApp.trailsList',
+  'ngCookies',
+  'ui.router',
+  'ngAnimate',
+  'ngMap'
+  ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $stateparams) {
 	$urlRouterProvider.otherwise('/home');
@@ -36,6 +57,7 @@ angular.module('trailApp', [
 				url: '/trailsList',
 				views: {
 
+<<<<<<< b13b2b4712d2ac40c235dee3cd6c43721b11b1d7
 							'trailsList': {
 								templateUrl: 'app/trailsList/trailsList.html',
 								controller: 'TrailsListCtrl',
@@ -50,6 +72,24 @@ angular.module('trailApp', [
 			.state("trail", {
 				url:'/trail/:trailId',
 				views: {
+=======
+              'trail': {
+                templateUrl: 'app/trailProfile/trailProfile.html',
+                controller: 'profileCtrl',
+                controllerAs: 'profile'
+              },
+              'comment': {
+                templateUrl: 'app/comment/comment.html',
+                controller: 'commentsCtrl',
+                controllerAs: 'comments'
+              },
+              'weather': {
+                templateUrl: 'app/weather/weather.html',
+                controller: 'weatherCtrl',
+              //  controllerAs: 'weather'
+              }
+        }
+>>>>>>> getting somewhere in weather land
 
 							'trail': {
 								templateUrl: 'app/trailProfile/trailProfile.html',
@@ -92,6 +132,7 @@ angular.module('trailApp.services', ['ngCookies'])
 	showTrails.list = {};
 	showTrails.location;
 
+			// TODO - rename w/ better name - unclear if this is searched loc or users' current loc
 	//store the user's location query (city, state) in showTrails.location
 	var userLocation = function(params) {
 		console.log('in usrLoc:',params)
@@ -168,7 +209,12 @@ angular.module('trailApp.services', ['ngCookies'])
 	//get user name info
 	var getUser = function () {
 		if (cookie !== undefined) {
-			return cookie.username;
+			if (!cookie.username) {
+				return "Friend"
+			}
+			else {
+				return cookie.username;
+			}
 	 }
 	};
 	//get user image
@@ -358,6 +404,35 @@ angular.module('trailApp.services', ['ngCookies'])
 
 		//below is for the star rating. It's ugly, but it works.
 		//The below is for the star rating. Needs added functionality and user input!
+.factory('weather', function($http) { // maybe not http?
+  console.log("This inside of .factory", this);
+    var weather = this;
+    weather.location;
+
+    var userLocation = function(params) {
+      console.log('in usrLoc:',params);
+      weather.location = params;
+      // console.log('userLocation service: ', showTrails.location);
+    }
+
+ // VALIDATION LATER 
+
+    var getWeather = function () {
+      return $http({
+        method : 'GET',
+        url: '/weather',
+        params :  weather.location
+      })
+      .then(function (result) {console.log(result);})
+      .catch(function(err) { console.log("Error is ", err);})
+
+    }
+  return { userLocation : userLocation,
+           getWeather : getWeather
+         }
+
+}) 
+
 .directive('starRating', function () {
 		return {
 				restrict: 'A',
@@ -386,21 +461,22 @@ angular.module('trailApp.services', ['ngCookies'])
 
 angular.module('trailApp.intro', [])
 
-.controller('introCtrl', function($window, showTrails, imageService) {
-	// hit the images service so the background can load
+.controller('introCtrl', function($window, showTrails, weather, imageService) {
+  // hit the images service so the background can load
 //  imageService.homeImages();
-
 
 	var intro = this;
 	var location = intro.location;
 	intro.sendLocation = function(location) {
 		//console.log('intro sendLocation: ', location)
 
-		//send location to service showTrails.userLocation so it can be stored in the service for other controllers to access
-		showTrails.userLocation(location);
-		//redirect to /trailList
-		$window.location.href = '/#/trailsList'
-	}
+    //send location to service showTrails.userLocation so it can be stored in the service for other controllers to access
+    showTrails.userLocation(location);
+    weather.userLocation(location);
+    //redirect to /trailList
+    
+    $window.location.href = '/#/trailsList'
+  }
 });
 
 var trailsApp = angular.module('trailApp.topNav', [])

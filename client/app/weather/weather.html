@@ -1,0 +1,43 @@
+<!-- already part of ng-app from myApp.js -->
+
+<div class="container"> <!-- is this a bootstrap specific class? -->
+  <div class="weatherContainer"> <!-- classname for our styling -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="trails">  <!-- new CSS class instead of trails? -->
+  
+          <h3 class="results-title">Today's forecast for {{ currentlocation.city}}, {{ currentlocation.state}}</h3>
+          <!-- show current day weather -->
+          <span id="today_status">{{ weatherChannel.data[0].weather_status }}</span>
+          <span id="todayHighTemp">{{ weatherChannel.data[0].high_temp_f }}</span>
+          <img id="todayIcon" ng-src="{{ weatherChannel.data[0].weather_icon}}">
+
+          <!-- show following dates weather -->
+          <!-- span b/c not block level ele-->
+          <div class="row">
+              <div class="col-md-1">
+                  <span class="dayOfWeekBottom">{{ weatherChannel.data[1].day_of_week }}</span>
+                  <span class="temp_bottom">{{ weatherChannel.data[1].high_temp_f }}</span>
+                  <img class="weekIcon" ng-src="{{ weatherChannel.data[1].weather_icon}}">
+              </div>
+              <div class="col-md-1">
+                  <span class="dayOfWeekBottom">{{ weatherChannel.data[2].day_of_week }}</span>
+                  <span class="temp_bottom">{{ weatherChannel.data[2].high_temp_f }}</span>
+                  <img class="weekIcon" ng-src="{{ weatherChannel.data[2].weather_icon}}">
+              </div>
+              <div class="col-md-1">
+                  <span class="dayOfWeekBottom">{{ weatherChannel.data[3].day_of_week }}</span>
+                  <span class="temp_bottom"> {{ weatherChannel.data[3].high_temp_f }}</span>
+                  <img class="weekIcon" ng-src="{{ weatherChannel.data[3].weather_icon}}">
+              </div>
+              <div class="col-md-1">
+                  <span class="dayOfWeekBottom">{{ weatherChannel.data[4].day_of_week }}</span>
+                  <span class="temp_bottom"> {{ weatherChannel.data[4].high_temp_f }}</span>
+                  <img class="weekIcon" ng-src="{{ weatherChannel.data[4].weather_icon}}">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
