@@ -7,6 +7,7 @@
 @import "partials/trailList";
 @import "partials/comments";
 @import "partials/trailProfile";
+@import "partials/weather";
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
 
@@ -48,6 +49,7 @@
 
 body {
 	height: 100vh!important;
+	overflow-x:hidden;
 }
 .input_search_box {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -39,11 +39,11 @@ angular.module('trailApp', [
 										templateUrl: 'app/trailsList/trailsList.html',
 										controller: 'TrailsListCtrl',
 										controllerAs: 'trails'
-								},
-								'bkgd': {
-										templateUrl: 'app/bkgd/bkgd.html',
-										controller: 'bkgdCtrl'
 								}
+//								'bkgd': {
+//										templateUrl: 'app/bkgd/bkgd.html',
+//										controller: 'bkgdCtrl'
+//								}
 						}
 				})
 				.state("trail", {

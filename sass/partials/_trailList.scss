@@ -1,6 +1,16 @@
 .jtronTxt {
- margin-top: 80px;
+ position: relative;
+ top: 50%;
+ transform: translateY(30%);
+}
 
+
+@media only screen and (min-width: 1224px) {
+	.jtronTxt {
+		position: relative;
+		top: 50%;
+		transform: translateY(45%);
+	}
 }
 
 .trails {
