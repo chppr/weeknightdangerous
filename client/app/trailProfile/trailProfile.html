@@ -1,5 +1,5 @@
 <div class="bg_container profile_slides">
-	<div class="loader" ng-show="profile.loading"></div>
+	<div  ></div>
 	<ul>
 		<li class="slide" ng-repeat="slide in profile.slides.data">
 			<img ng-click="profile.open(slide)" src="{{slide.image.low_res.url}}">
@@ -35,6 +35,7 @@
 		<div class="col-md-8">
 		<h3 style="font-weight:700; color:black">Description</h3>
 			<p>{{profile.data.description}}</p>
+			<hr>
 		</div>
 		<div class="col-md-4">
 			<ng-map center="[{{profile.data.lat}}, {{profile.data.lon}}]">

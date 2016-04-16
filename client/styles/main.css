@@ -5835,6 +5835,8 @@ button.close {
   box-sizing: border-box; }
 
 .bg_container {
+  height: 400px;
+  background-image: url("../img/trailsTemp.jpg");
   position: relative;
   padding: 70px 0 10px 0; }
   .bg_container ul {
@@ -5936,6 +5938,9 @@ h3.navbar-text {
   width: 35px;
   margin-top: 10px; }
 
+.navbar-right li {
+  display: inline; }
+
 .homeBG {
   height: 100vh;
   background-color: beige; }
@@ -5952,7 +5957,7 @@ h3.navbar-text {
 .overlayTrails {
   width: 100%;
   display: table;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 0;
   /* right: 0; */
@@ -6057,7 +6062,15 @@ h3.navbar-text {
   background-color: #78FA89; }
 
 .jtronTxt {
-  margin-top: 80px; }
+  position: relative;
+  top: 50%;
+  transform: translateY(30%); }
+
+@media only screen and (min-width: 1224px) {
+  .jtronTxt {
+    position: relative;
+    top: 50%;
+    transform: translateY(45%); } }
 
 .trails {
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.5);
@@ -6223,7 +6236,6 @@ ul.rating {
         pointer-events: none; }
 
 .profile_slides {
-  background: white;
   overflow: hidden; }
 
 .gram-user {
@@ -6243,6 +6255,17 @@ ul.rating {
 #map {
   height: 400px; }
 
+.weatherBox {
+  padding: 10px 40px;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.5); }
+  .weatherBox h3, .weatherBox h4 {
+    text-align: center;
+    color: black; }
+  .weatherBox .highTemp {
+    color: black;
+    text-align: center;
+    font-weight: 700; }
+
 @font-face {
   font-family: "rissa";
   src: url("/fonts/rissatypeface-webfont.eot?") format("eot"), url("/fonts/rissatypeface-webfont.woff2") format("woff2"), url("/fonts/rissatypeface-webfont.woff") format("woff"), url("/fonts/rissatypeface-webfont.ttf") format("truetype"), url('/fonts/rissatypeface-webfont.svg#str-replace("rissa", " ", "_")') format("svg"); }
@@ -6255,7 +6278,8 @@ ul.rating {
   font-style: normal; }
 
 body {
-  height: 100vh !important; }
+  height: 100vh !important;
+  overflow-x: hidden; }
 
 .input_search_box {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

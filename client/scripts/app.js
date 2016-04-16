@@ -1,127 +1,110 @@
 angular.module('trailApp.weather', [])
 
-.controller('weatherCtrl', function($scope) {
- // var weather = this;
+.controller('weatherCtrl', function($scope, weather) {
+   $scope.weatherChannel = 'You have the weather channel';
+ // var weather = this; // controllerAs
   //  weather.weather = {};
-    // var location = weather.location;
-      console.log("I'm inside of weather.js");
+    var location = $scope.location;
+    console.log("scope.location ", location);
+      console.log("I'm inside of client - weather.js ");
 
-     // weather.getWeather = function () {
-     //    weather.getWeather( weather.weather)
-     //      .then(function (result) {
-     //          console.log("I am result in getWeather ", result);
-     //      })
-     //      .catch(function (err){
-     //          console.log("I am ERR : ", err);
-     //      }) 
-     // }
+     $scope.getWeather = function () {
+        return weather.getWeather()
+          .then(function (result) {
+              console.log("client/weather/weather.js ln 12 :", result);
+              $scope.weatherChannel = result;
+             $scope.currentlocation = result.location;
+          })
+          .catch(function (err){
+              console.log("client/weather/weather.js ln 15 :", err);
+          }) 
+     }
+     $scope.getWeather();
 });
 
 
 angular.module('trailApp', [
-  'ui.bootstrap',
-  'trailApp.weather',
-  'trailApp.services',
-  'trailApp.intro',
-  'trailApp.topNav',
-  'trailApp.bkgd',
-  'trailApp.profile',
-  'trailApp.myFav',
-  'trailApp.comment',
-  'trailApp.trailsList',
-  'ngCookies',
-  'ui.router',
-  'ngAnimate',
-  'ngMap'
-  ])
+		'ui.bootstrap',
+		'trailApp.weather',
+		'trailApp.services',
+		'trailApp.intro',
+		'trailApp.topNav',
+		'trailApp.bkgd',
+		'trailApp.profile',
+		'trailApp.myFav',
+		'trailApp.comment',
+		'trailApp.trailsList',
+		'ngCookies',
+		'ui.router',
+		'ngAnimate',
+		'ngMap'
+])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $stateparams) {
-	$urlRouterProvider.otherwise('/home');
-	$stateProvider
-		 .state("home", {
-				url: '/home',
-				views: {
-
-							'intro': {
-								templateUrl: 'app/intro/intro.html',
-								controller: 'introCtrl',
-								controllerAs: 'intro'
-							},
-							'homeBkgd': {
-								templateUrl: 'app/homeBkgd/homeBkgd.html',
-								controller: 'homeBkgdCtrl'
-							}
-				}
+		$urlRouterProvider.otherwise('/home');
+		$stateProvider
+				.state("home", {
+						url: '/home',
+						views: {
+								'intro': {
+										templateUrl: 'app/intro/intro.html',
+										controller: 'introCtrl',
+										controllerAs: 'intro'
+								},
+								'homeBkgd': {
+										templateUrl: 'app/homeBkgd/homeBkgd.html',
+										controller: 'homeBkgdCtrl'
+								}
+						}
+				})
+				.state("trailsList", {
+						url: '/trailsList',
+						views: {
+								'trailsList': {
+										templateUrl: 'app/trailsList/trailsList.html',
+										controller: 'TrailsListCtrl',
+										controllerAs: 'trails'
+								}
+//								'bkgd': {
+//										templateUrl: 'app/bkgd/bkgd.html',
+//										controller: 'bkgdCtrl'
+//								}
+						}
+				})
+				.state("trail", {
+						url: '/trail/:trailId',
+						views: {
+								'trail': {
+										templateUrl: 'app/trailProfile/trailProfile.html',
+										controller: 'profileCtrl',
+										controllerAs: 'profile'
+								},
+								'comment': {
+										templateUrl: 'app/comment/comment.html',
+										controller: 'commentsCtrl',
+										controllerAs: 'comments'
+								},
+								'weather': {
+										templateUrl: 'app/weather/weather.html',
+										controller: 'weatherCtrl',
+										//controllerAs: 'weather'
+								}
+						}
+				})
+				.state("myFav", {
+						url: '/myFav',
+						views: {
+								'trail': {
+										templateUrl: 'app/myFav/myFav.html',
+										controller: 'myFavCtrl',
+										controllerAs: 'myFav'
+								},
+								'bkgd': {
+										templateUrl: 'app/bkgd/bkgd.html',
+										controller: 'bkgdCtrl'
+								}
+						}
 		 })
-			.state("trailsList", {
-				url: '/trailsList',
-				views: {
-
-<<<<<<< b13b2b4712d2ac40c235dee3cd6c43721b11b1d7
-							'trailsList': {
-								templateUrl: 'app/trailsList/trailsList.html',
-								controller: 'TrailsListCtrl',
-								controllerAs: 'trails'
-							}
-							// 'bkgd': {
-							// 	templateUrl: 'app/bkgd/bkgd.html',
-							// 	controller: 'bkgdCtrl'
-							// }
-				}
-			})
-			.state("trail", {
-				url:'/trail/:trailId',
-				views: {
-=======
-              'trail': {
-                templateUrl: 'app/trailProfile/trailProfile.html',
-                controller: 'profileCtrl',
-                controllerAs: 'profile'
-              },
-              'comment': {
-                templateUrl: 'app/comment/comment.html',
-                controller: 'commentsCtrl',
-                controllerAs: 'comments'
-              },
-              'weather': {
-                templateUrl: 'app/weather/weather.html',
-                controller: 'weatherCtrl',
-              //  controllerAs: 'weather'
-              }
-        }
->>>>>>> getting somewhere in weather land
-
-							'trail': {
-								templateUrl: 'app/trailProfile/trailProfile.html',
-								controller: 'profileCtrl',
-								controllerAs: 'profile'
-							},
-							'comment': {
-								templateUrl: 'app/comment/comment.html',
-								controller: 'commentsCtrl',
-								controllerAs: 'comments'
-							}
-				}
-
-			})
-			.state("myFav", {
-				url:'/myFav',
-				views: {
-
-							'trail': {
-								templateUrl: 'app/myFav/myFav.html',
-								controller: 'myFavCtrl',
-								controllerAs: 'myFav'
-							},
-							'bkgd': {
-								templateUrl: 'app/bkgd/bkgd.html',
-								controller: 'bkgdCtrl'
-							}
-				}
-
-			})
-
-
 }])
 
 angular.module('trailApp.services', ['ngCookies'])
@@ -413,8 +396,6 @@ angular.module('trailApp.services', ['ngCookies'])
 	return imageServices;
 }])
 
-		//below is for the star rating. It's ugly, but it works.
-		//The below is for the star rating. Needs added functionality and user input!
 .factory('weather', function($http) { // maybe not http?
   console.log("This inside of .factory", this);
     var weather = this;
@@ -425,17 +406,25 @@ angular.module('trailApp.services', ['ngCookies'])
       weather.location = params;
       // console.log('userLocation service: ', showTrails.location);
     }
-
  // VALIDATION LATER 
 
     var getWeather = function () {
-      return $http({
+    	console.log("I am weather.location inside .factory :", weather.location);
+    	console.log("I'm in client services.js - getWeather");
+     return $http({
         method : 'GET',
         url: '/weather',
         params :  weather.location
       })
-      .then(function (result) {console.log(result);})
-      .catch(function(err) { console.log("Error is ", err);})
+      .then(function (result) {
+      	console.log("I am getWeather - services.js result :", result);
+      	result.location = weather.location;
+      	return result;
+      })
+
+      .catch(function(err) { 
+      	console.log("I am getWeather - services.js error is ", err);
+      })
 
     }
   return { userLocation : userLocation,
